@@ -4,26 +4,27 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#121614" id="tcolor">
+<meta name="theme-color" content="#1e1e1e" id="tcolor">
 <title>The Life of Moses</title>
 <style>
 :root{
- --bg:#f4f1ea; --card:#e9e5dc; --card2:#ddd8cd;
- --fg:#202923; --dim:#59635b; --dim2:#7d867e;
- --ac:#8a5a1f; --acq:rgba(138,90,31,.12);
- --ok:#2b8a57; --okq:rgba(43,138,87,.13);
- --heart:#d9465a;
- --line:#cfcabe; --sh:rgba(0,0,0,.09);
- --tile:#25322e; --tileb:#65736a; --gold:#c5ac78; --tilefg:#f4efdf; --tiledim:#c5c9bd;
+ --bg:#f3f3f3; --card:#e7e7e7; --card2:#d8d8d8;
+ --fg:#1d1d1d; --dim:#5c5c5c; --dim2:#828282;
+ --acb:#2f5ea8; --ac:#2a58a0; --acq:rgba(47,94,168,.11); --mk:rgba(47,94,168,.22);
+ --ok:#2f5ea8; --okq:rgba(47,94,168,.11);
+ --heart:#d6455a;
+ --line:#d6d6d6; --sh:rgba(0,0,0,.1);
+ --tile:#e7e7e7; --tileb:#d3d3d3; --gold:#2f5ea8; --tilefg:#1d1d1d; --tiledim:#5c5c5c; --tilet:#d3d3d3;
  --fs:21px; --rf:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",system-ui,sans-serif;
 }
 :root[data-theme="dark"]{
- --bg:#121614; --card:#1b201d; --card2:#252b27;
- --fg:#f1eee5; --dim:#abaea7; --dim2:#8a8e86;
- --ac:#e0b56f; --acq:rgba(224,181,111,.16);
- --ok:#4cc38a; --okq:rgba(76,195,138,.16);
- --heart:#f06b7c;
- --line:#323a34; --sh:rgba(0,0,0,.6);
+ --bg:#1e1e1e; --card:#272727; --card2:#323232;
+ --fg:#ececec; --dim:#a6a6a6; --dim2:#7c7c7c;
+ --acb:#3d69bb; --ac:#7da2e6; --acq:rgba(77,123,210,.17); --mk:rgba(92,138,222,.36);
+ --ok:#3d69bb; --okq:rgba(77,123,210,.17);
+ --heart:#ef6b7d;
+ --line:#2f2f2f; --sh:rgba(0,0,0,.55);
+ --tile:#272727; --tileb:#353535; --gold:#5f8ad8; --tilefg:#ececec; --tiledim:#a6a6a6; --tilet:#383838;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%}
@@ -35,7 +36,7 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:720px;margin:0 auto;padding:0 18px calc(40px + env(safe-area-inset-bottom,0px))}
 
 /* top bar */
-.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 96%,transparent);
+.top{position:sticky;top:0;z-index:40;background:var(--bg);
  backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
  border-bottom:.5px solid var(--line);
  padding:8px 14px;padding-top:calc(8px + env(safe-area-inset-top,0px))}
@@ -47,10 +48,10 @@ a{color:inherit;text-decoration:none}
 .back svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
 .brand{font-size:17px;font-weight:600;letter-spacing:-.2px;color:var(--dim);flex:1;min-width:0;
  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
-.tt{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto}
+.tt{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto}
 .tt svg{width:22px;height:22px;stroke:var(--dim);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .tt.aa{font-size:18px;font-weight:600;color:var(--dim);letter-spacing:-.5px}
-.rbar{position:absolute;left:0;bottom:-1px;height:3px;background:var(--ac);width:0;transition:width .1s linear}
+.rbar{position:absolute;left:0;bottom:-1px;height:3px;background:var(--acb);width:0;transition:width .1s linear}
 
 /* text settings sheet */
 .sheet{position:fixed;left:0;right:0;z-index:60;top:calc(61px + env(safe-area-inset-top,0px));
@@ -82,11 +83,10 @@ a{color:inherit;text-decoration:none}
 .big{font-size:30px;font-weight:700;letter-spacing:-.6px;line-height:1.15}
 .big small{display:block;font-size:17px;font-weight:500;color:var(--dim);letter-spacing:0;margin-top:4px}
 .track{height:10px;border-radius:6px;background:var(--card2);overflow:hidden;margin-top:14px}
-.fill{height:100%;background:var(--ok);border-radius:6px;width:0;transition:width .3s ease}
+.fill{height:100%;background:var(--acb);border-radius:6px;width:0;transition:width .3s ease}
 .plab{display:flex;justify-content:space-between;font-size:15px;color:var(--dim);margin-top:8px;font-variant-numeric:tabular-nums}
-.cont{display:flex;align-items:center;gap:14px;width:100%;background:var(--ac);color:#fff;
+.cont{display:flex;align-items:center;gap:14px;width:100%;background:var(--acb);color:#fff;
  border-radius:16px;padding:16px 18px;margin:0 0 26px;min-height:64px}
-:root[data-theme="dark"] .cont{color:#1a1408}
 .cont .ct{flex:1;min-width:0}
 .cont .ck{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
 .cont .cn{font-size:19px;font-weight:600;line-height:1.3;margin-top:2px}
@@ -94,14 +94,13 @@ a{color:inherit;text-decoration:none}
 .sect{font-size:14px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--dim2);margin:26px 0 12px}
 .bk{position:relative;display:block;width:100%;background:var(--tile);border:1px solid var(--tileb);
  border-radius:14px;padding:26px 20px 18px;margin-bottom:12px;color:var(--tilefg);
- box-shadow:0 3px 7px #00000014;transition:transform .12s ease}
+ box-shadow:0 2px 6px var(--sh);transition:transform .12s ease}
 .bk:active{transform:scale(.985)}
 .bk::after{content:'';position:absolute;top:13px;left:calc(50% - 16px);width:32px;height:1px;background:var(--gold)}
-.bk::before{content:'';position:absolute;left:8px;top:12px;bottom:12px;width:1px;background:#ffffff10}
 .bk .bn{font-size:26px;font-weight:600;letter-spacing:-.4px;text-align:center}
 .bk .bs{font-size:15px;color:var(--tiledim);text-align:center;margin-top:2px}
-.bk .bt{height:7px;border-radius:5px;background:#ffffff1c;overflow:hidden;margin-top:16px}
-.bk .bf{height:100%;background:var(--gold);border-radius:5px}
+.bk .bt{height:7px;border-radius:5px;background:var(--tilet);overflow:hidden;margin-top:16px}
+.bk .bf{height:100%;background:var(--acb);border-radius:5px}
 .bk .bp{display:flex;justify-content:space-between;font-size:14px;color:var(--tiledim);margin-top:8px;font-variant-numeric:tabular-nums}
 .foot{margin-top:34px;text-align:center}
 .foot button{font-size:15px;color:var(--dim2);padding:12px 16px}
@@ -141,7 +140,7 @@ a{color:inherit;text-decoration:none}
 .text{padding:14px 0 10px}
 .para{position:relative;font-family:var(--rf);font-size:var(--fs);line-height:1.62;letter-spacing:-.1px;
  margin:0 -10px 6px;padding:8px 10px;border-radius:12px;transition:background .3s ease}
-.para .n{font-size:.62em;font-weight:700;color:var(--ac);margin-right:7px;vertical-align:.15em;
+.para .n{font-size:.62em;font-weight:700;color:var(--dim2);margin-right:7px;vertical-align:.15em;
  font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;font-variant-numeric:tabular-nums}
 .para .fv{float:right;width:44px;height:44px;margin:-6px -8px 0 6px;display:grid;place-items:center;border-radius:50%;opacity:.35}
 .para .fv svg{width:20px;height:20px;fill:none;stroke:var(--dim);stroke-width:2;stroke-linejoin:round}
@@ -152,7 +151,6 @@ a{color:inherit;text-decoration:none}
 .done-box{margin:22px 0 10px}
 .mark{width:100%;min-height:62px;border-radius:16px;background:var(--ok);color:#fff;font-size:20px;font-weight:600;
  display:flex;align-items:center;justify-content:center;gap:10px}
-:root[data-theme="dark"] .mark{color:#08130d}
 .mark svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
 .isdone{display:flex;align-items:center;justify-content:center;gap:10px;font-size:19px;font-weight:600;color:var(--ok);
  background:var(--okq);border-radius:16px;min-height:62px}
@@ -177,6 +175,38 @@ a{color:inherit;text-decoration:none}
 .fgo{font-size:16px;font-weight:600;color:var(--ac);background:var(--acq);padding:10px 16px;border-radius:10px;min-height:44px}
 .fdel{font-size:16px;color:var(--dim2);padding:10px 14px;border-radius:10px;min-height:44px}
 
+/* search */
+.sfield{display:flex;align-items:center;gap:10px;width:100%;background:var(--card);border-radius:14px;
+ padding:0 8px 0 14px;min-height:54px;margin:18px 0 0;border:1px solid transparent}
+.sfield:focus-within{border-color:var(--acb)}
+.sfield svg{width:21px;height:21px;stroke:var(--dim2);fill:none;stroke-width:2.2;stroke-linecap:round;flex:0 0 auto}
+.sfield input{flex:1;min-width:0;font:inherit;font-size:19px;border:0;background:transparent;color:var(--fg);
+ outline:none;padding:14px 0;-webkit-appearance:none;appearance:none}
+.sfield input::placeholder{color:var(--dim2)}
+.sfield input::-webkit-search-cancel-button,.sfield input::-webkit-search-decoration{-webkit-appearance:none;appearance:none;display:none}
+.sfield .ph{flex:1;font-size:19px;color:var(--dim2);padding:14px 0}
+.sclr{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto}
+.sclr[hidden]{display:none}
+.sclr svg{width:18px;height:18px}
+.shead{padding:20px 0 0}
+.shead h1{margin:0;font-size:32px;font-weight:700;letter-spacing:-.8px}
+.scount{font-size:16px;color:var(--dim);padding:14px 0 4px}
+.stips{font-size:16px;color:var(--dim2);line-height:1.6;padding:16px 0}
+.stips b{color:var(--dim);font-weight:600}
+.rg{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dim2);margin:22px 0 4px}
+.ri{display:block;width:100%;border-top:1px solid var(--line);padding:14px 0 15px}
+.rg + .ri{border-top:0}
+.ri .rt{font-size:15px;font-weight:600;color:var(--ac);margin-bottom:5px}
+.ri .rs{font-family:var(--rf);font-size:calc(var(--fs) - 2px);line-height:1.55;color:var(--fg)}
+.ri:active{background:var(--acq)}
+mark{background:var(--mk);color:inherit;border-radius:4px;padding:0 2px;margin:0 -1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.more{display:block;width:100%;text-align:center;font-size:17px;font-weight:600;color:var(--ac);background:var(--card);
+ border-radius:14px;min-height:54px;margin-top:14px}
+.qchip{display:flex;align-items:center;gap:10px;background:var(--acq);border-radius:12px;padding:6px 6px 6px 14px;margin-top:12px}
+.qchip .qt{flex:1;min-width:0;font-size:16px;color:var(--fg)}
+.qchip .qt b{font-weight:600}
+.qchip button{font-size:15px;font-weight:600;color:var(--ac);padding:8px 12px;min-height:40px;border-radius:9px}
+
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);
  background:var(--fg);color:var(--bg);font-size:16px;font-weight:600;padding:12px 20px;border-radius:999px;
  opacity:0;pointer-events:none;transition:all .25s ease;z-index:80;white-space:nowrap}
@@ -186,6 +216,7 @@ a{color:inherit;text-decoration:none}
 <div class="top" id="top"><div class="topin">
   <button class="back" id="back" hidden><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span id="backlab">Books</span></button>
   <div class="brand" id="brand">The Life of Moses</div>
+  <button class="tt" id="srchbtn" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg></button>
   <button class="tt aa" id="aa" aria-label="Text size">Aa</button>
   <button class="tt" id="favbtn" aria-label="Favorites"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
   <button class="tt" id="tt" aria-label="Light or dark"><svg id="ttsvg" viewBox="0 0 24 24"></svg></button>
@@ -234,7 +265,7 @@ const SUN='<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 1
 const MOON='<path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/>';
 function applyTheme(t){ document.documentElement.setAttribute('data-theme', t);
   $('#ttsvg').innerHTML = t === 'dark' ? SUN : MOON;
-  $('#tcolor').setAttribute('content', t === 'dark' ? '#121614' : '#f4f1ea'); }
+  $('#tcolor').setAttribute('content', t === 'dark' ? '#1e1e1e' : '#f3f3f3'); }
 let theme = LS.get('lom_theme', null);
 if (!theme) theme = (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
 applyTheme(theme);
@@ -263,6 +294,7 @@ const sheetOpen = on => { sheet.classList.toggle('open', on); scrim.classList.to
 $('#aa').onclick = () => sheetOpen(!sheet.classList.contains('open'));
 scrim.onclick = () => sheetOpen(false);
 $('#favbtn').onclick = () => location.hash = '#favs';
+$('#srchbtn').onclick = () => location.hash = '#search';
 
 let tt = null;
 function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add('show');
@@ -295,7 +327,8 @@ function home(){
   setNav(null, '', 'The Life of Moses');
   const st = stats(ALL), nx = nextUp();
   let h = `<div class="hero"><div class="eyebrow">Gregory of Nyssa</div>
-    <h1>The Life of Moses</h1><p>Concerning Perfection in Virtue</p></div>`;
+    <h1>The Life of Moses</h1><p>Concerning Perfection in Virtue</p>
+    <button class="sfield" id="hs">${SICON}<span class="ph">Search any word or phrase</span></button></div>`;
   h += `<div class="prog">
     <div class="big">${st.left ? st.left + ' section' + (st.left === 1 ? '' : 's') + ' left' : 'All finished'}
       <small>${st.left ? 'About ' + hm(st.minLeft) + ' of reading to go' : 'Every section is marked read'}</small></div>
@@ -323,6 +356,7 @@ function home(){
   app.querySelectorAll('[data-go]').forEach(el => el.onclick = () => location.hash = '#s/' + el.dataset.go);
   app.querySelectorAll('[data-b]').forEach(el => el.onclick = () => location.hash = '#b/' + el.dataset.b);
   app.querySelector('[data-favs]').onclick = () => location.hash = '#favs';
+  $('#hs').onclick = () => location.hash = '#search';
   $('#reset').onclick = () => {
     if (!confirm('Clear all finished marks? Favorites are kept.')) return;
     done = {}; LS.set('lom_done', done); last = null; LS.set('lom_last', null); home();
@@ -365,17 +399,19 @@ function book(id, flash){
 
 /* ---------- reading ---------- */
 let saveT = null, onRead = null;
-function section(id, para){
+function section(id, para, q){
   const s = BYID[id]; if (!s) return home();
   const b = s.b;
-  setNav('#b/' + b.id, b.n, s.t);
+  const terms = q ? parseQ(q) : [];
+  if (terms.length) setNav('#search', 'Search', s.t); else setNav('#b/' + b.id, b.n, s.t);
   const prev = ALL[s.g - 1], next = ALL[s.g + 1];
   let h = `<div class="rhead"><div class="eyebrow">${b.n} &middot; ${s.i + 1} of ${b.s.length}</div>
     <h1>${esc(s.t)}</h1><div class="rmeta"><span>${range(s)} &middot; ${mins(s.w)} min read</span>
-    ${isDone(s.id) ? `<span class="pill">${CHECK}Finished</span>` : ''}</div></div><div class="text" id="text">`;
+    ${isDone(s.id) ? `<span class="pill">${CHECK}Finished</span>` : ''}</div>
+    ${terms.length ? `<div class="qchip"><div class="qt">Highlighting <b>${esc(q)}</b></div><button id="qclr">Clear</button></div>` : ''}</div><div class="text" id="text">`;
   s.p.forEach((p, i) => {
     const f = isFav(s.id, i);
-    h += `<div class="para${f ? ' faved' : ''}" id="p${i}" data-pi="${i}"><button class="fv" data-fv="${i}" aria-label="Favorite paragraph ${p[0] || ''}"><svg viewBox="0 0 24 24"><path d="${HEART}"/></svg></button>${p[0] ? `<span class="n">${p[0]}</span>` : ''}${esc(p[1])}</div>`;
+    h += `<div class="para${f ? ' faved' : ''}" id="p${i}" data-pi="${i}"><button class="fv" data-fv="${i}" aria-label="Favorite paragraph ${p[0] || ''}"><svg viewBox="0 0 24 24"><path d="${HEART}"/></svg></button>${p[0] ? `<span class="n">${p[0]}</span>` : ''}${terms.length ? hl(p[1], terms) : esc(p[1])}</div>`;
   });
   h += '</div><div class="done-box" id="donebox"></div><div class="pn">';
   if (prev) h += `<button data-go="${prev.id}"><span>Previous${prev.b !== b ? ' &middot; ' + prev.b.n : ''}</span>${esc(prev.t)}</button>`;
@@ -383,6 +419,7 @@ function section(id, para){
   h += '</div>';
   app.innerHTML = h;
   drawDone(s);
+  if (terms.length) $('#qclr').onclick = () => { const y = scrollY; history.replaceState(null, '', '#s/' + id); section(id, null, null); scrollTo(0, y); };
   app.querySelectorAll('.pn [data-go]').forEach(el => el.onclick = () => location.hash = '#s/' + el.dataset.go);
   app.querySelectorAll('[data-fv]').forEach(el => el.onclick = e => {
     e.stopPropagation();
@@ -469,14 +506,113 @@ function favsView(){
     const y = scrollY; favsView(); scrollTo(0, y); });
 }
 
+/* ---------- search ---------- */
+const SICON = '<svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg>';
+const XICON = '<svg viewBox="0 0 24 24" style="stroke:var(--dim2);fill:none;stroke-width:2.4;stroke-linecap:round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+// same-length normalisation so match offsets line up with the original text
+const norm = s => s.toLowerCase().replace(/[‘’ʼ]/g, "'").replace(/[“”]/g, '"').replace(/[‐-―]/g, '-');
+function parseQ(q){
+  const out = [], re = /"([^"]+)"|(\S+)/g; let m;
+  q = norm(q || '');
+  while ((m = re.exec(q))){
+    let t = (m[1] != null ? m[1] : m[2]).trim();
+    if (m[1] == null) t = t.replace(/^[^\w']+|[^\w']+$/g, '');
+    if (t.length) out.push(t);
+  }
+  return [...new Set(out)];
+}
+function ranges(text, terms){
+  const n = norm(text), r = [];
+  terms.forEach(t => { let i = 0; while ((i = n.indexOf(t, i)) >= 0){ r.push([i, i + t.length]); i += t.length; } });
+  r.sort((a, b) => a[0] - b[0]);
+  const m = [];
+  r.forEach(x => { if (m.length && x[0] <= m[m.length - 1][1]) m[m.length - 1][1] = Math.max(m[m.length - 1][1], x[1]); else m.push(x.slice()); });
+  return m;
+}
+function hl(text, terms, from = 0, to = text.length){
+  let out = '', at = from;
+  ranges(text, terms).forEach(([a, b]) => {
+    if (b <= from || a >= to) return;
+    a = Math.max(a, from); b = Math.min(b, to);
+    out += esc(text.slice(at, a)) + '<mark>' + esc(text.slice(a, b)) + '</mark>'; at = b;
+  });
+  return out + esc(text.slice(at, to));
+}
+function snippet(text, terms){
+  const r = ranges(text, terms); if (!r.length) return esc(text.slice(0, 240));
+  const W = 250;
+  if (text.length <= W + 40) return hl(text, terms);
+  let a = Math.max(0, r[0][0] - 80);
+  if (a > 0){ const sp = text.indexOf(' ', a); a = sp > 0 && sp < r[0][0] ? sp + 1 : a; }
+  let b = Math.min(text.length, a + W);
+  if (b < text.length){ const sp = text.lastIndexOf(' ', b); if (sp > r[0][1]) b = sp; }
+  return (a > 0 ? '&hellip; ' : '') + hl(text, terms, a, b) + (b < text.length ? ' &hellip;' : '');
+}
+const NORMP = ALL.map(s => s.p.map(p => norm(p[1])));
+function runSearch(terms){
+  const hits = [];
+  ALL.forEach((s, si) => NORMP[si].forEach((n, pi) => { if (terms.every(t => n.includes(t))) hits.push([s, pi]); }));
+  return hits;
+}
+let query = LS.get('lom_q', ''), shown = 60, sT = null;
+function searchView(){
+  setNav('#', 'Home', 'Search');
+  app.innerHTML = `<div class="shead"><h1>Search</h1></div>
+    <label class="sfield">${SICON}<input id="sq" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Any word or phrase"><button class="sclr" id="sclr" aria-label="Clear" hidden>${XICON}</button></label>
+    <div id="sres"></div>`;
+  const inp = $('#sq'), clr = $('#sclr');
+  inp.value = query; clr.hidden = !query;
+  inp.addEventListener('input', () => { clr.hidden = !inp.value; clearTimeout(sT);
+    sT = setTimeout(() => { query = inp.value; LS.set('lom_q', query); shown = 60; drawResults(); }, 140); });
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') inp.blur(); });
+  clr.onclick = e => { e.preventDefault(); inp.value = ''; query = ''; LS.set('lom_q', ''); clr.hidden = true; drawResults(); inp.focus(); };
+  drawResults();
+  if (!query) setTimeout(() => inp.focus(), 60);
+}
+function drawResults(){
+  const box = $('#sres'); if (!box) return;
+  const terms = parseQ(query);
+  if (!terms.length || terms.every(t => t.length < 2)){
+    box.innerHTML = `<div class="stips">Type any word to find every paragraph that contains it, across both books. Tap a result to jump straight there.<br><br>
+      Several words find paragraphs with <b>all</b> of them: <b>darkness light</b><br>Quotes find an exact phrase: <b>"perfection of virtue"</b></div>`;
+    return;
+  }
+  const hits = runSearch(terms);
+  const titles = ALL.filter(s => terms.every(t => norm(s.t).includes(t)));
+  if (!hits.length && !titles.length){ box.innerHTML = `<div class="scount">No paragraphs contain <b>${esc(query.trim())}</b>.</div>`; return; }
+  const secs = new Set(hits.map(h => h[0].id)).size;
+  let h = `<div class="scount">${hits.length} paragraph${hits.length === 1 ? '' : 's'} in ${secs} section${secs === 1 ? '' : 's'}</div>`;
+  if (titles.length){
+    h += '<div class="rg">Section titles</div>' + titles.map(s =>
+      `<button class="ri" data-sec="${s.id}"><div class="rt">${s.b.n} &middot; ${range(s)}</div><div class="rs" style="font-weight:600">${hl(s.t, terms)}</div></button>`).join('');
+  }
+  let grp = null;
+  hits.slice(0, shown).forEach(([s, pi]) => {
+    const key = s.b.id;
+    if (key !== grp){ grp = key; h += `<div class="rg">${s.b.n}</div>`; }
+    const p = s.p[pi];
+    h += `<button class="ri" data-hit="${s.id}|${pi}"><div class="rt">${esc(s.t)}${p[0] ? ' &middot; §' + p[0] : ''}</div>
+      <div class="rs">${snippet(p[1], terms)}</div></button>`;
+  });
+  if (hits.length > shown) h += `<button class="more" id="more">Show more (${hits.length - shown} left)</button>`;
+  box.innerHTML = h;
+  box.querySelectorAll('[data-hit]').forEach(el => el.onclick = () => {
+    const [id, pi] = el.dataset.hit.split('|');
+    location.hash = '#s/' + id + '/' + pi + '/q/' + encodeURIComponent(query.trim());
+  });
+  box.querySelectorAll('[data-sec]').forEach(el => el.onclick = () => location.hash = '#s/' + el.dataset.sec);
+  const m = $('#more'); if (m) m.onclick = () => { const y = scrollY; shown += 100; drawResults(); scrollTo(0, y); };
+}
+
 /* ---------- routing ---------- */
 function route(){
   const h = location.hash || '';
   onRead = null; sheetOpen(false);
   window.scrollTo(0, 0);
   if (h.startsWith('#favs')){ favsView(); readBar(); return; }
-  const s = h.match(/^#s\/([^/]+)(?:\/(\d+))?/);
-  if (s) return section(s[1], s[2] != null ? +s[2] : null);
+  if (h.startsWith('#search')){ searchView(); readBar(); return; }
+  const s = h.match(/^#s\/([^/]+)(?:\/(\d+))?(?:\/q\/(.*))?/);
+  if (s) return section(s[1], s[2] != null ? +s[2] : null, s[3] != null ? decodeURIComponent(s[3]) : null);
   const b = h.match(/^#b\/(.+)/);
   if (b){ book(b[1]); readBar(); return; }
   home(); readBar();
